@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        body {
+            background-color: #7367f0; /* Purplish blue */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-title {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container-title h1 {
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .inputcol {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .textarea {
+            width: 300px;
+            height: 30px;
+            padding: 5px;
+            border: none;
+            background-color: transparent;
+            color: white;
+            resize: none;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .buttoninput {
+            background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buttoninput:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+        }
+
+        .todolist {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the start of the container */
+        }
+
+        .todolist p {
+            margin: 5px 0; /* Add some space between items */
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+    <div class="container-title">
+        <h1>To Do List</h1>
+    </div>
+    <div class="container">
+        <div class="inputcol">
+            <textarea id="todoInput" class="textarea"></textarea>
+            <button id="addButton" class="buttoninput">Add</button>
+        </div>
+    </div>
+    <div class="todolist" id="todoList">
+        <!-- To Do List items will go here -->
+    </div>
+
+    <script>
+        document.getElementById("addButton").addEventListener("click", function() {
+            var todoText = document.getElementById("todoInput").value;
+            if (todoText.trim() !== "") {
+                var newItem = document.createElement("p");
+                newItem.textContent = document.querySelectorAll('.todolist p').length + 1 + ". " + todoText;
+                document.getElementById("todoList").appendChild(newItem);
+                document.getElementById("todoInput").value = "";
+            }
+        });
+    </script>
+</body>
+</html>
